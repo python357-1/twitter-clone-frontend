@@ -1,20 +1,55 @@
-Week 1 (Jan 29 - Feb 4):
+Week of Jan 29:
 
-- [ ] Complete auth integration
-- [ ] Basic tweet creation/display
-- [ ] Initial user profiles
+- [x] Complete auth integration
+- [x] Initial user profiles
+- [x] Basic tweet creation/display
 
-- Week 2 (Feb 5 - 11):
-- [ ] Timeline implementation
+Week of Feb 5:
+
 - [ ] Following system
-- [ ] Tweet interactions (like/retweet)
+- [ ] Basic timeline (doesn't need to be optimized yet)
+- [ ] Start containerization alongside feature work
 
-- Week 3 (Feb 12 - 18):
-- [ ] Polish UI/UX
-- [ ] Add remaining core features
-- [ ] Begin testing
+Week of Feb 12:
 
-- Week 4 (Feb 19 - 28):
-- [ ] Bug fixes
+- [ ] Finish basic features
+- [ ] Complete containerization
+- [ ] Initial Kubernetes setup
+
+Week of Feb 19:
+
+- [ ] Cloud deployment
+- [ ] Basic monitoring
+- [ ] Initial load testing setup
+- [ ] First big load test
+
+Week of Feb 26:
+
+- [ ] Learn Kubernetes basics
+- [ ] Initial Kubernetes configs
+- [ ] Start cloud setup
+
+Week of March 4:
+
+- [ ] Complete cloud deployment
+- [ ] Set up Redis
+- [ ] Configure databases properly
+
+Week of March 11:
+
+- [ ] Set up Prometheus/Grafana
+- [ ] Basic monitoring implementation
+- [ ] Start JMeter setup
+
+Week of March 18:
+
+- [ ] Complete load testing setup
+- [ ] Initial performance testing
+- [ ] Start fixing bottlenecks
+
+Week of March 25:
+
 - [ ] Performance optimization
+- [ ] Scale testing
+- [ ] Documentation
 - [ ] Final polish

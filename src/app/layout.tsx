@@ -5,6 +5,9 @@ import Script from "next/script";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { ToastContainer } from "react-toastify";
+import { Providers } from "./providers";
+import TwitterNav from "@/components/TwitterNav";
 config.autoAddCss = false;
 
 const geistSans = Geist({
@@ -38,7 +41,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <div className="flex">
+            <TwitterNav />
+            {children}
+          </div>
+        </Providers>
+        <ToastContainer />
       </body>
     </html>
   );

@@ -1,76 +1,96 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouse,
+  faBell,
+  faEnvelope,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
-
-export enum HighlightUrl {
-  Home,
-  Notifications,
-  Messages,
-}
+import { useAuth } from "@/hooks/useAuth";
+import TweetModal from "./TweetModal";
+import { usePathname } from "next/navigation";
 
 export default function TwitterNav({
   className,
-  highlight,
 }: {
   className?: string | undefined;
-  highlight?: HighlightUrl | undefined;
 }) {
+  const { isAuthenticated } = useAuth();
+  const pathname = usePathname();
   return (
-    <div className={className + " w-64 p-7"}>
+    <div className={className + " w-72 p-7"}>
       <ul className="text-2xl mx-2">
         <li className="mb-4 mx-2">
           <FontAwesomeIcon icon={faTwitter} className="fa-xl" />
         </li>
         <li className="mb-3 mx-2">
-          <FontAwesomeIcon icon={faHouse} className="mr-2" />
           <Link
             href="/"
             className={
-              "" +
-              (highlight == HighlightUrl.Home
-                ? "text-blue-500 font-bold"
-                : undefined)
+              "" + (pathname == "/" ? "text-blue-500 font-bold" : undefined)
             }
           >
+            <FontAwesomeIcon icon={faHouse} className="mr-2" />
             Home
           </Link>
         </li>
         <li className="mb-3 mx-2">
-          <FontAwesomeIcon icon={faBell} className="mr-2" />
           <Link
             href="/notifications"
             className={
               "" +
-              (highlight == HighlightUrl.Notifications
+              (pathname.startsWith("/notifications")
                 ? "text-blue-500 font-bold"
                 : undefined)
             }
           >
-            Notification
+            <FontAwesomeIcon icon={faBell} className="mr-2" />
+            Notifications
           </Link>
         </li>
         <li className="mb-3 mx-2">
-          <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
           <Link
             href="/messages"
             className={
               "" +
-              (highlight == HighlightUrl.Messages
+              (pathname.startsWith("/messages")
                 ? "text-blue-500 font-bold"
                 : undefined)
             }
           >
+            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             Messages
           </Link>
         </li>
+        {isAuthenticated && (
+          <li className="mb-3 mx-2">
+            <Link
+              href="/profile"
+              className={
+                "" +
+                (pathname.startsWith("/profile")
+                  ? "text-blue-500 font-bold"
+                  : undefined)
+              }
+            >
+              <FontAwesomeIcon icon={faUser} className="mr-2" />
+              Profile
+            </Link>
+          </li>
+        )}
         <li>
-          <Link
-            href="/login"
-            className="bg-blue-600 rounded-3xl w-full inline-block text-center"
-          >
-            Login
-          </Link>
+          {isAuthenticated == null || isAuthenticated == false ? (
+            <Link
+              href="/login"
+              className="bg-blue-600 rounded-3xl w-full inline-block text-center"
+            >
+              Login
+            </Link>
+          ) : (
+            <TweetModal />
+          )}
         </li>
       </ul>
     </div>
