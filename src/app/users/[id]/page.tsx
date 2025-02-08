@@ -11,7 +11,6 @@ export default function UserProfile({
 }) {
   const [user, setUser] = useState<Person | null>(null);
   useEffect(() => {
-    let currentUserId = 0;
     const getProfileUser = async () => {
       const res = await fetch(`/api/users/${(await params).id}`);
       setUser(await res.json());

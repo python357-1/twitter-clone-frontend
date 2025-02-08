@@ -82,7 +82,7 @@ export default function Login() {
         className="block text-center font-black rounded-full w-full text-xl py-2 px-10 mt-5 bg-slate-200 text-black cursor-pointer"
         href="/register"
       >
-        Don't have an account yet? Register now!
+        Don&apos;t have an account yet? Register now!
       </Link>
     </div>
   );

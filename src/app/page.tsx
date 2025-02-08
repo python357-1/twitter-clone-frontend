@@ -3,6 +3,7 @@
 import { Person } from "@/types";
 import { useState } from "react";
 import Timeline from "@/components/Timeline";
+import Image from "next/image";
 
 export default function Home() {
   const [users, setUsers] = useState<Person[] | null>([]);
@@ -46,7 +47,7 @@ export default function Home() {
                 return (
                   <a key={x.Id} href={`/users/${x.Id}`}>
                     <li className="bg-slate-800 px-10 hover:bg-slate-600 hover:rounded-full mx-1">
-                      <img
+                      <Image
                         src="https://placehold.co/40x40"
                         alt={`${x.Username}'s profile picture`}
                         className="inline"

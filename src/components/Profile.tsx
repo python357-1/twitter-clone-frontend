@@ -11,7 +11,7 @@ export default function Profile({ user }: { user: Person }) {
   useEffect(() => {
     const getCurrentUserId = async () => {
       const res = await fetch("/api/users/me");
-      let currentUserId = ((await res.json()) as Person).Id;
+      const currentUserId = ((await res.json()) as Person).Id;
       if (currentUserId == (user?.Id ?? 0)) {
         setOwnProfile(true);
       }
@@ -38,7 +38,13 @@ export default function Profile({ user }: { user: Person }) {
       method: "POST",
       body: new URLSearchParams(`userid=${user.Id}`),
     });
-    //TODO: handle fail
+    switch (res.status) {
+      //TODO: handle fail
+      default:
+        console.error("fuck");
+        toast.error("fuck");
+        break;
+    }
   };
 
   return (

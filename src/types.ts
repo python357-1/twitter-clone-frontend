@@ -1,5 +1,3 @@
-import { UUID } from "crypto";
-
 export interface Tweet {
   Id: number;
   AuthorId: number;

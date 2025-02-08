@@ -8,7 +8,7 @@ Week of Feb 5:
 
 - [x] Following system
 - [x] Basic timeline (doesn't need to be optimized yet)
-- [ ] Start containerization alongside feature work
+- [x] Start containerization alongside feature work
 
 Week of Feb 12:
 

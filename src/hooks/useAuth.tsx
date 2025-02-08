@@ -54,7 +54,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         user: data.user || null,
         loading: false,
       });
-    } catch (error) {
+    } catch {
       setAuth({
         isAuthenticated: false,
         user: null,
@@ -80,7 +80,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       await checkAuth();
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   };
@@ -94,7 +94,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         loading: false,
       });
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   };

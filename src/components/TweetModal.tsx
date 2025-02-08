@@ -10,8 +10,8 @@ import {
 } from "@headlessui/react";
 
 export default function TweetModal() {
-  let [isOpen, setIsOpen] = useState(false);
-  let [tweetText, setTweetText] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [tweetText, setTweetText] = useState("");
 
   const handleTweet = () => {
     fetch("/api/tweets/", {

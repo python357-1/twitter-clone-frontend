@@ -1,6 +1,5 @@
 "use client";
 
-import TwitterNav from "@/components/TwitterNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
@@ -19,7 +18,7 @@ export default function Register() {
   const [emailProblem, setEmailProblem] = useState(false);
 
   const registrationHandler = async () => {
-    var res = await fetch("/api/auth/register", {
+    const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -41,7 +40,7 @@ export default function Register() {
         const body: ErrorResponse = await res.json();
         console.log(body);
 
-        for (let error of body.types) {
+        for (const error of body.types) {
           if (error == ErrorType.emailInvalid) {
             setEmailProblem(true);
             toast.error("Email is not valid");
