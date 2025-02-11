@@ -12,7 +12,9 @@ export default function UserProfile({
   const [user, setUser] = useState<Person | null>(null);
   useEffect(() => {
     const getProfileUser = async () => {
-      const res = await fetch(`/api/users/${(await params).id}`);
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + `/users/${(await params).id}`
+      );
       setUser(await res.json());
     };
     getProfileUser();

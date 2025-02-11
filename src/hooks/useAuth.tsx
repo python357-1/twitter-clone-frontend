@@ -43,7 +43,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const checkAuth = async (): Promise<void> => {
     try {
-      const res = await fetch("/api/auth/me");
+      const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/auth/me");
       const data: {
         isAuthenticated: boolean;
         user?: User;
@@ -68,11 +68,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     password: string
   ): Promise<boolean> => {
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Login failed");
@@ -87,7 +90,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const logout = async (): Promise<boolean> => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" });
+      await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/auth/logout", {
+        method: "POST",
+      });
       setAuth({
         isAuthenticated: false,
         user: null,

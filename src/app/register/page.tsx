@@ -18,17 +18,20 @@ export default function Register() {
   const [emailProblem, setEmailProblem] = useState(false);
 
   const registrationHandler = async () => {
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        username,
-        password,
-        email,
-      }).toString(),
-    });
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_BACKEND_URL + "/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          username,
+          password,
+          email,
+        }).toString(),
+      }
+    );
 
     switch (res.status) {
       case 200:

@@ -6,6 +6,7 @@ import Timeline from "@/components/Timeline";
 import Image from "next/image";
 
 export default function Home() {
+  console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
   const [users, setUsers] = useState<Person[] | null>([]);
   const onInputHandler = async (query: string) => {
     if (query == "") {
@@ -13,9 +14,12 @@ export default function Home() {
       return;
     }
     const users = await (
-      await fetch(`/api/users?query=${query}`, {
-        method: "GET",
-      })
+      await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + `/users?query=${query}`,
+        {
+          method: "GET",
+        }
+      )
     ).json();
     setUsers(users);
   };

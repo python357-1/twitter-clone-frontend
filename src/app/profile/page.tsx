@@ -8,9 +8,12 @@ export default function Profile() {
   const [user, setUser] = useState<Person | null>(null);
   useEffect(() => {
     const getPerson = async () => {
-      const res = await fetch("/api/users/me", {
-        method: "GET",
-      });
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/users/me",
+        {
+          method: "GET",
+        }
+      );
       setUser(await res.json());
     };
     getPerson();

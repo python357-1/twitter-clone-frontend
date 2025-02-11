@@ -14,7 +14,7 @@ export default function TweetModal() {
   const [tweetText, setTweetText] = useState("");
 
   const handleTweet = () => {
-    fetch("/api/tweets/", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/tweets/", {
       method: "POST",
       body: new URLSearchParams({
         tweetText,

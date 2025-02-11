@@ -14,16 +14,19 @@ export default function Login() {
   const { checkAuth } = useAuth();
 
   const loginHandler = async () => {
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        username,
-        password,
-      }).toString(),
-    });
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_BACKEND_URL + "/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          username,
+          password,
+        }).toString(),
+      }
+    );
 
     checkAuth();
     switch (res.status) {

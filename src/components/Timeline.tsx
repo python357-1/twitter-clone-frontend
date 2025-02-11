@@ -10,9 +10,10 @@ export default function Timeline() {
   const [tweets, setTweets] = useState<Tweet[]>([]);
   const getMoreTweets = async () => {
     const res = await fetch(
-      `/api/timeline${
-        currentStartingDate != "" ? "startingDate=" + currentStartingDate : ""
-      }`
+      process.env.NEXT_PUBLIC_BACKEND_URL +
+        `/timeline${
+          currentStartingDate != "" ? "startingDate=" + currentStartingDate : ""
+        }`
     );
 
     switch (res.status) {

@@ -7,6 +7,9 @@ export default function getTimeSinceTweeted(tweet: Tweet): string {
   const timeSinceTweet = Date.now() - new Date(tweet.Tweeted).getTime();
   if (timeSinceTweet < dayLengthInMillis) {
     if (timeSinceTweet < hourLengthInMillis) {
+      if (timeSinceTweet < minuteLengthInMillis * 10) {
+        return "Just now";
+      }
       const minutesSinceTweet = Math.round(
         timeSinceTweet / minuteLengthInMillis
       );
@@ -17,6 +20,6 @@ export default function getTimeSinceTweeted(tweet: Tweet): string {
     const hoursSinceTweet = Math.round(timeSinceTweet / hourLengthInMillis);
     return `${hoursSinceTweet} ${hoursSinceTweet == 1 ? "hour" : "hours"} ago`;
   }
-  const daysSinceTweet = timeSinceTweet / dayLengthInMillis;
+  const daysSinceTweet = Math.round(timeSinceTweet / dayLengthInMillis);
   return `${daysSinceTweet} ${daysSinceTweet == 1 ? "day" : "days"} ago`;
 }

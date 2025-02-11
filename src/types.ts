@@ -4,6 +4,8 @@ export interface Tweet {
   RetweetedTweetId: number;
   Body: string;
   Tweeted: string; // ISO 8601 formatted date string
+  HasProfilePic: boolean;
+  AuthorUsername: string;
 }
 
 export interface Person {
