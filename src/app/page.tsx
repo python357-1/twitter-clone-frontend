@@ -24,7 +24,7 @@ export default function Home() {
     setUsers(users);
   };
   return (
-    <div className="flex w-screen">
+    <div className="flex w-screen bg-blue-300 pt-4">
       <div className="basis-4/5">
         <Timeline></Timeline>
       </div>
@@ -32,7 +32,7 @@ export default function Home() {
         <div id={"search-dropdown"}>
           <input
             className={
-              "block mx-auto px-3 mt-4 py-2 text-lg text-black w-2/3 " +
+              "block mx-auto px-3 py-2 text-lg text-black w-2/3 " +
               (users?.length ?? 0 > 1 ? "rounded-t-3xl" : "rounded-3xl")
             }
             type="text"

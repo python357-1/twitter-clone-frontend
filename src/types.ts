@@ -14,6 +14,7 @@ export interface Person {
   Email: string;
   Tweets: Tweet[];
   Description: string;
+  HasProfilePic: boolean;
 }
 
 export interface TimelineUpdate {

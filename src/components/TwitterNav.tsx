@@ -20,7 +20,7 @@ export default function TwitterNav({
   const { isAuthenticated } = useAuth();
   const pathname = usePathname();
   return (
-    <div className={className + " w-72 p-7"}>
+    <div className={className + " w-72 p-7 bg-blue-300"}>
       <ul className="text-2xl mx-2">
         <li className="mb-4 mx-2">
           <FontAwesomeIcon icon={faTwitter} className="fa-xl" />
@@ -29,7 +29,7 @@ export default function TwitterNav({
           <Link
             href="/"
             className={
-              "" + (pathname == "/" ? "text-blue-500 font-bold" : undefined)
+              "" + (pathname == "/" ? "text-white font-bold" : undefined)
             }
           >
             <FontAwesomeIcon icon={faHouse} className="mr-2" />
@@ -42,7 +42,7 @@ export default function TwitterNav({
             className={
               "" +
               (pathname.startsWith("/notifications")
-                ? "text-blue-500 font-bold"
+                ? "text-white font-bold"
                 : undefined)
             }
           >
@@ -56,7 +56,7 @@ export default function TwitterNav({
             className={
               "" +
               (pathname.startsWith("/messages")
-                ? "text-blue-500 font-bold"
+                ? "text-white font-bold"
                 : undefined)
             }
           >
@@ -71,7 +71,7 @@ export default function TwitterNav({
               className={
                 "" +
                 (pathname.startsWith("/profile")
-                  ? "text-blue-500 font-bold"
+                  ? "text-white font-bold"
                   : undefined)
               }
             >

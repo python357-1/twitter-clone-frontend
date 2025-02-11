@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import TweetComponent from "./Tweet";
 import EditProfileModal from "./EditProfileModal";
+import { PROFILE_PIC_ENDPOINT } from "@/constants";
+import Image from "next/image";
 
 export default function Profile({ user }: { user: Person }) {
   const [tweets, setTweets] = useState<Tweet[]>([]);
@@ -56,18 +58,36 @@ export default function Profile({ user }: { user: Person }) {
   };
 
   return (
-    <div className="flex flex-col" key={user != null ? user.Id : 1}>
+    <div className="flex flex-col bg-blue-300" key={user != null ? user.Id : 1}>
       <img
         className="block w-full m-auto"
         src="https://placehold.co/1920x300"
         alt="banner"
       />
-      <div className="flex flex-row justify-between mt-5">
+      <div className="flex flex-row justify-between ml-0 m-5 bg-blue-400 rounded-2xl p-3">
         <div>
-          <h1 className="text-xl">{user != null && "@" + user.Username}</h1>
-          <h2 className="text-lg inline whitespace-pre-wrap">
-            {user != null && user.Description}
-          </h2>
+          <div className="flex p-2 rounded-2xl">
+            <Image
+              src={
+                PROFILE_PIC_ENDPOINT +
+                `${
+                  user.HasProfilePic
+                    ? user.Id.toString()
+                    : "twtrclone-default-prof-pic"
+                }?v=${crypto.randomUUID()}`
+              }
+              alt="profile picture"
+              width="60"
+              height="60"
+              className="size-[80px] m-2"
+            ></Image>
+            <h1 className="text-xl">{user != null && "@" + user.Username}</h1>
+          </div>
+          <div className="pl-4">
+            <h2 className="text-lg inline whitespace-pre-wrap">
+              {user != null && user.Description}
+            </h2>
+          </div>
         </div>
         {ownProfile ? (
           <>
@@ -87,7 +107,7 @@ export default function Profile({ user }: { user: Person }) {
           <button onClick={followHandler}>Follow</button>
         )}
       </div>
-      <div className="w-1/4">
+      <div className="pr-5">
         {user != null && tweets && tweets.length > 0 ? (
           tweets.map((x) => (
             <TweetComponent tweet={x} key={x.Id}></TweetComponent>
