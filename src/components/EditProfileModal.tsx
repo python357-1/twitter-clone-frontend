@@ -4,7 +4,7 @@ import {
   DialogBackdrop,
   DialogTitle,
 } from "@headlessui/react";
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
 import { Person } from "@/types";
 
@@ -22,13 +22,13 @@ export default function EditProfileModal({
     const fileInput: HTMLInputElement = document.querySelector("#profPic")!;
     const formData = new FormData();
     formData.append("profPic", fileInput.files![0]);
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/me/profile-picture`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    //const _ = await fetch(
+    //  `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/me/profile-picture`,
+    //  {
+    //    method: "POST",
+    //    body: formData,
+    //  }
+    //);
   };
 
   const handleBioSave = async () => {
