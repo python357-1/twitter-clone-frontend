@@ -42,7 +42,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <div className="flex min-h-screen h-full">
+          <div className="flex min-h-screen h-full bg-blue-300">
             <TwitterNav />
             {children}
           </div>
