@@ -1,5 +1,6 @@
 # Build stage
 FROM node:18-alpine AS builder
+ENV NEXT_PUBLIC_BACKEND_URL=/api
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
